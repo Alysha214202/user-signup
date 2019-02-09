@@ -33,13 +33,25 @@ def right_length(x):
 #not a valid email (single @, single ., no space, >3, <20 )
 
 def valid_email(x):
-    if x.count('@') = 1:
+    if x.count('@') >= 1:
         return True
     else:
-        return False 
+        return False
 
-def single_period(x):
-    if x.count('.') = 1:
+def multiple_at_signs(x):
+    if x.count('@') <= 1:
+        return True
+    else:
+        return False
+
+def a_period(x):
+    if x.count('.') >= 1:
+        return True
+    else:
+        return False
+
+def multiple_periods(x):
+    if x.count('.') <=1:
         return True
     else:
         return False
@@ -88,7 +100,49 @@ def user_signup_success():
             password_validation = ''
             password_error = reenter_error
             password_validation_error = reenter_error
-            
+
+    #email validation
+
+    if empty_field(email):
+        if not right_length(email):
+            email_error = length_error
+            password = ''
+            password_validation = ''
+            password_error = reenter_error
+            password_validation_error = reenter_error
+        elif not valid_email(email):
+            email_error = "Email must contain an @ symbol."
+            password = ''
+            password_validation = ''
+            password_error = reenter_error
+            password_validation_error = reenter_error
+        elif not multiple_at_signs(email):
+            email_error = "Email must contain only one @ symbol."
+            password = ''
+            password_validation = ''
+            password_error = reenter_error
+            password_validation_error = reenter_error
+        elif not a_period(email):
+            email_error = "Email must contain a ."
+            password = ''
+            password_validation = ''
+            password_error = reenter_error
+            password_validation_error = reenter_error
+        elif not multiple_periods(email):
+            email_error = "Email must contain only one ."
+            password = ''
+            password_validation = ''
+            password_error = reenter_error
+            password_validation_error = reenter_error
+        else:
+            if " " in email:
+                email_error = spaces_error
+                password = ''
+                password_validation = ''
+                password_error = reenter_error
+                password_validation_error = reenter_error
+                
+
     #password validation
 
     if not empty_field(password):
