@@ -85,6 +85,14 @@ def user_signup_success():
             password_validation = ''
             password_validation_error = reenter_error
 
+    #second password entry
+
+    if password_validation != password:
+        password_validation_error = "Your passwords must match."
+        password = ''
+        password_validation = ''
+        password_error = 'Your passwords must match.'
+
 
 #feedback message next to field it refers to
 
