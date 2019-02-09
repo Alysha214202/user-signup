@@ -80,6 +80,8 @@ def user_signup_success():
     reenter_error = "Please re-enter your password."
 
     #username validation
+    #reset password fields for security
+    #keep email and username fields
 
     if not empty_field(username):
         username_error = required_error
@@ -169,14 +171,24 @@ def user_signup_success():
         password_validation = ''
         password_error = 'Your passwords must match.'
 
-
-#feedback message next to field it refers to
-
-#pass & confirmation don't match
-
-#preserve what user wrote for username and email
-
-#clear password fields for security
-
 #Show welcome page for valid input
+#Otherwise, remain on same page
+
+    if not email_error and not username_error and not password_error and not password_validation_error:
+        username = username
+        return redirect('/welcome?username={0}'.format(username))
+    else:
+        return render_template('main.html', email_error=email_error, email=email, username_error=username_error, username=username, password_error=password_error, password=password, password_validation_error=password_validation_error, password_validation=password_validation)
+
+# Redirect to the welcome page
+
+@app.route('/welcome')
+def signup_success():
+    username = request.args.get('username')
+    return render_template('welcome.html', username=username)
+
+app.run()
+
+
+
 
