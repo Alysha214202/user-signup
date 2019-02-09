@@ -67,6 +67,28 @@ def user_signup_success():
     length_error = "Entry must be between 3 and 20 characters."
     reenter_error = "Please re-enter your password."
 
+    #username validation
+
+    if not empty_field(username):
+        username_error = required_error
+        password = ''
+        password_validation = ''
+        password_error = reenter_error
+        password_validation_error = reenter_error
+    elif not right_length(username):
+        username_error = length_error
+        password = ''
+        password_validation = ''
+        password_error = reenter_error
+        password_validation_error = reenter_error
+    else:
+        if " " in username:
+            username_error = spaces_error
+            password = ''
+            password_validation = ''
+            password_error = reenter_error
+            password_validation_error = reenter_error
+            
     #password validation
 
     if not empty_field(password):
