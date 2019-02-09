@@ -67,6 +67,25 @@ def user_signup_success():
     length_error = "Entry must be between 3 and 20 characters."
     reenter_error = "Please re-enter your password."
 
+    #password validation
+
+    if not empty_field(password):
+        password_error = required_error
+        password =  ''
+        password_validation = ''
+    elif not right_length(password):
+        password_error = length_error
+        password = ''
+        password_validation = ''
+        password_validation_error = reenter_error
+    else:
+        if " " in password:
+            password_error = spaces_error
+            password = ''
+            password_validation = ''
+            password_validation_error = reenter_error
+
+
 #feedback message next to field it refers to
 
 #pass & confirmation don't match
