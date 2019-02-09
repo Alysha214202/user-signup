@@ -25,7 +25,7 @@ def empty_field(x):
 #the name/pass are not valid (<3,>20)
 
 def right_length(x):
-    if len(x) > 3 and len(x) < 20:
+    if len(x) >= 3 and len(x) <= 20:
         return True
     else:
         return False
@@ -55,6 +55,17 @@ def user_signup_success():
     password = request.form['password']
     password_validation = request.form['password_validation']
     email = request.form['text']
+
+    #error messages
+
+    username_error = ""
+    password_error = ""
+    password_validation_error = ""
+    email_error = ""
+    spaces_error = "Entry cannot contain spaces."
+    required_error = "This field is required."
+    length_error = "Entry must be between 3 and 20 characters."
+    reenter_error = "Please re-enter your password."
 
 #feedback message next to field it refers to
 
