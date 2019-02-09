@@ -46,6 +46,16 @@ def single_period(x):
 
 #process form
 
+@app.route("/signup", methods=['POST'])
+def user_signup_success():
+
+    #form input variables
+
+    username = request.form['username']
+    password = request.form['password']
+    password_validation = request.form['password_validation']
+    email = request.form['text']
+
 #feedback message next to field it refers to
 
 #pass & confirmation don't match
